@@ -38,8 +38,24 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         // 20210812 KDH 손 동작시 마법 발사 구현
-        if (udpSoc.curMagicStr == "fireball" && udpSoc.isreceivedData)
+        if (udpSoc.isreceivedData)
         {
+            if (udpSoc.curMagicStr == "fireball")
+            {
+                Debug.Log("!!!!!!!fireball");
+                playerInput.setChangeCharacterState(1);
+            }   
+            else if(udpSoc.curMagicStr == "thunderStorm")
+            {
+                Debug.Log("!!!!!!thunderstorm");
+                playerInput.setChangeCharacterState(2);
+            }
+            else if(udpSoc.curMagicStr == "ignition")
+            {
+                Debug.Log("!!!!!!ignition");
+                playerInput.setChangeCharacterState(3);
+            }
+            
             fireMagic();
         }
 
@@ -57,16 +73,19 @@ public class PlayerAttack : MonoBehaviour
         { } //do nothing
         else if (playerInput.changeCharacterState == 1)
         {
+            //fireball
             GameObject magic = Instantiate(magicPrefabs[0], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
         else if (playerInput.changeCharacterState == 2)
         {
+            //thunderstorm
             GameObject magic = Instantiate(magicPrefabs[1], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
         else if (playerInput.changeCharacterState == 3)
         {
+            //ignition
             GameObject magic = Instantiate(magicPrefabs[2], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }

@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     //값 할당은 내부에서만 가능하도록 getter/setter 지정
     public bool fireMagic { get; private set; }
     public int changeCharacterState { get; private set; }
+
     
     // 마법 발사와 캐릭터 상태 변경 함수 초기화
     void Start()
@@ -59,5 +60,11 @@ public class PlayerInput : MonoBehaviour
             changeCharacterState++;
             changeCharacterState = changeCharacterState % 4;
         }
+    }
+
+    // 20210812 changeCharacterState setter 
+    public void setChangeCharacterState(int val)
+    {
+        changeCharacterState = val;
     }
 }
