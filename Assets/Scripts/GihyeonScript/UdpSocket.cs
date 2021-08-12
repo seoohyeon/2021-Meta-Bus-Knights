@@ -11,7 +11,7 @@ public class UdpSocket : MonoBehaviour
 {
     [HideInInspector] public bool isTxStarted = false;
 
-    [SerializeField] string IP = "192.168.0.28"; // local host
+    [SerializeField] string IP = "192.168.25.38"; // local host
     [SerializeField] int rxPort = 8000; // port to receive data from Python on
     [SerializeField] int txPort = 8001; // port to send data to Python on
 
@@ -21,6 +21,12 @@ public class UdpSocket : MonoBehaviour
     UdpClient client;
     IPEndPoint remoteEndPoint;
     Thread receiveThread; // Receiving Thread
+
+
+    // 20210812_KDH player receiving magic data
+    public string curMagicStr;
+    public bool isreceivedData = false;
+
 
     IEnumerator SendDataCoroutine() // DELETE THIS: Added to show sending data from Unity to Python via UDP
     {
@@ -45,6 +51,11 @@ public class UdpSocket : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        isreceivedData = false;
+    }
+
     void Awake()
     {
         // Create remote endpoint (to Matlab) 
@@ -56,6 +67,7 @@ public class UdpSocket : MonoBehaviour
         // local endpoint define (where messages are received)
         // Create a new thread for reception of incoming messages
         receiveThread = new Thread(new ThreadStart(ReceiveData));
+
         receiveThread.IsBackground = true;
         receiveThread.Start();
 
@@ -63,6 +75,8 @@ public class UdpSocket : MonoBehaviour
         print("UDP Comms Initialised");
 
         StartCoroutine(SendDataCoroutine()); // DELETE THIS: Added to show sending data from Unity to Python via UDP
+
+        //StartCoroutine(initReceivedDataFlag());
     }
 
     // Receive data, update packets received
@@ -75,6 +89,12 @@ public class UdpSocket : MonoBehaviour
                 IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
                 byte[] data = client.Receive(ref anyIP);
                 string text = Encoding.UTF8.GetString(data);
+
+                // 20210812_KDH send magic kind to player
+                curMagicStr = text;
+                ChangeIsreceivedData();
+
+
                 print(">> " + text);
                 ProcessInput(text);
             }
@@ -84,6 +104,12 @@ public class UdpSocket : MonoBehaviour
             }
         }
     }
+
+    private void ChangeIsreceivedData()
+    {
+        isreceivedData = true;   
+    }
+
 
     private void ProcessInput(string input)
     {
