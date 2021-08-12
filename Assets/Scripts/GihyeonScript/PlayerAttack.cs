@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
 
+
     // 플레이어 입력을 알려주는 컴포넌트
     private PlayerInput playerInput;
 
@@ -19,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject magicPrefabPos;
 
     //마법 프리팹
-    public GameObject magicPrefab;
+    public GameObject[] magicPrefabs;
 
     //마법이 발사될 위치
     public Transform magicPosition;
@@ -37,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         // 20210812 KDH 손 동작시 마법 발사 구현
-        if ( udpSoc.curMagicStr == "fireball" && udpSoc.isreceivedData)
+        if (udpSoc.curMagicStr == "fireball" && udpSoc.isreceivedData)
         {
             fireMagic();
         }
@@ -52,8 +53,23 @@ public class PlayerAttack : MonoBehaviour
 
     private void fireMagic()
     {
-        GameObject magic = Instantiate(magicPrefab, magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
-        //magic.transform.LookAt(magicPosition.forward);
-    }
+        if (playerInput.changeCharacterState == 0)
+        { } //do nothing
+        else if (playerInput.changeCharacterState == 1)
+        {
+            GameObject magic = Instantiate(magicPrefabs[0], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
+                                                                                                             //magic.transform.LookAt(magicPosition.forward);
+        }
+        else if (playerInput.changeCharacterState == 2)
+        {
+            GameObject magic = Instantiate(magicPrefabs[1], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
+                                                                                                             //magic.transform.LookAt(magicPosition.forward);
+        }
+        else if (playerInput.changeCharacterState == 3)
+        {
+            GameObject magic = Instantiate(magicPrefabs[2], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
+                                                                                                             //magic.transform.LookAt(magicPosition.forward);
+        }
 
+    }
 }
