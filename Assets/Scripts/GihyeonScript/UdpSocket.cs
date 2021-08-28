@@ -11,9 +11,14 @@ public class UdpSocket : MonoBehaviour
 {
     [HideInInspector] public bool isTxStarted = false;
 
-    [SerializeField] string IP = "192.168.25.38"; // local host
-    [SerializeField] int rxPort = 8000; // port to receive data from Python on
-    [SerializeField] int txPort = 8001; // port to send data to Python on
+    // Local host
+    [SerializeField] string IP = "192.168.25.38";
+
+    // Port to receive data from Server
+    [SerializeField] int rxPort = 8000;
+
+    // port to send data to Server
+    [SerializeField] int txPort = 8001;
 
     int i = 0; // DELETE THIS: Added to show sending data from Unity to Python via UDP
 
@@ -38,7 +43,8 @@ public class UdpSocket : MonoBehaviour
         }
     }
 
-    public void SendData(string message) // Use to send data to Python
+    // Function : send data to server
+    public void SendData(string message)
     {
         try
         {
@@ -58,7 +64,7 @@ public class UdpSocket : MonoBehaviour
 
     void Awake()
     {
-        // Create remote endpoint (to Matlab) 
+        // Create remote endpoint
         remoteEndPoint = new IPEndPoint(IPAddress.Parse(IP), txPort);
 
         // Create local client
@@ -71,7 +77,7 @@ public class UdpSocket : MonoBehaviour
         receiveThread.IsBackground = true;
         receiveThread.Start();
 
-        // Initialize (seen in comments window)
+        // Initialization
         print("UDP Comms Initialised");
 
         StartCoroutine(SendDataCoroutine()); // DELETE THIS: Added to show sending data from Unity to Python via UDP
@@ -79,7 +85,7 @@ public class UdpSocket : MonoBehaviour
         //StartCoroutine(initReceivedDataFlag());
     }
 
-    // Receive data, update packets received
+    // Function : receive data, update packets received
     private void ReceiveData()
     {
         while (true)
@@ -113,15 +119,14 @@ public class UdpSocket : MonoBehaviour
 
     private void ProcessInput(string input)
     {
-        // PROCESS INPUT RECEIVED STRING HERE
-
-        if (!isTxStarted) // First data arrived so tx started
+        // First data arrived, so tx started
+        if (!isTxStarted) 
         {
             isTxStarted = true;
         }
     }
 
-    //Prevent crashes - close clients and threads properly!
+    //Prevent crashes, close clients and threads properly
     void OnDisable()
     {
         if (receiveThread != null)

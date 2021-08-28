@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//사용자 입력 감지
-//감지된 입력값을 다른 컴포넌트가 사용할 수 있게 제공
+//사용자 입력 감지 , 감지된 입력값을 다른 컴포넌트가 사용할 수 있게 제공
 public class PlayerInput : MonoBehaviour
 {
     //카메라 관련
@@ -46,12 +45,11 @@ public class PlayerInput : MonoBehaviour
         {
             mouseAngleY = -90;
         }*/
-        mouseAngleY = Mathf.Clamp(mouseAngleY, -90, 90); //mouseAngleY의 최소,최댓값 지정
+        //mouseAngleY의 최소,최댓값 지정
+        mouseAngleY = Mathf.Clamp(mouseAngleY, -90, 90);
 
         //픽셀이 부호가 위아래 반대이므로, mouseAngleY에 -1을 곱해서 반대로 만든다.
         transform.eulerAngles = new Vector3(-mouseAngleY, mouseAngleX, 0);
-
-
 
         fireMagic = Input.GetMouseButtonDown(0);
 

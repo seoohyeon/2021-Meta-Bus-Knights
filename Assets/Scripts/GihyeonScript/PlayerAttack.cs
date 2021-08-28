@@ -73,20 +73,23 @@ public class PlayerAttack : MonoBehaviour
         { } //do nothing
         else if (playerInput.changeCharacterState == 1)
         {
-            //fireball
-            GameObject magic = Instantiate(magicPrefabs[0], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
+            // magic - fireball
+            // magic을 magicPrefabPos에 생성한다.
+            GameObject magic = Instantiate(magicPrefabs[0], magicPosition.position, magicPosition.rotation);
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
         else if (playerInput.changeCharacterState == 2)
         {
-            //thunderstorm
-            GameObject magic = Instantiate(magicPrefabs[1], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
+            // magic - thunderstorm
+            // magic을 magicPrefabPos에 생성한다.
+            GameObject magic = Instantiate(magicPrefabs[1], magicPosition.position, magicPosition.rotation); 
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
         else if (playerInput.changeCharacterState == 3)
         {
-            //ignition
-            GameObject magic = Instantiate(magicPrefabs[2], magicPosition.position, magicPosition.rotation); // magic을 magicPrefabPos에 생성한다.
+            // magic - ignition
+            // magic을 magicPrefabPos에 생성한다.
+            GameObject magic = Instantiate(magicPrefabs[2], magicPosition.position, magicPosition.rotation);
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
 

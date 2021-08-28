@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Magic : MonoBehaviour
 {
+    // 발사 구체의 속도
     public float speed = 15f;
+
+    // 오브젝트의 물리 제어를 위한 컴포넌트
     private Rigidbody magicRigidbody;
 
     //마법이 적중한 위치를 저장할 변수
@@ -22,6 +25,7 @@ public class Magic : MonoBehaviour
         Destroy(gameObject, 4f);
     }
 
+    // 충돌 시 효과
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy"))
