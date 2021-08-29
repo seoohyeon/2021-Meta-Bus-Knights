@@ -20,7 +20,8 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         fireMagic = false;
-        changeCharacterState = 0; // 0:기본, 1: fireball, 2 : thunderstorm, 3 : ignition
+        // 0:기본, 1: fireball, 2 : thunderstorm, 3 : ignition
+        changeCharacterState = 0;
     }
 
    

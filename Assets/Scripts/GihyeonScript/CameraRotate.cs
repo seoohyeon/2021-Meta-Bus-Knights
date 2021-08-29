@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
 {
+
     public GameObject player;
+
     private Vector3 offset;
 
     private void Start()

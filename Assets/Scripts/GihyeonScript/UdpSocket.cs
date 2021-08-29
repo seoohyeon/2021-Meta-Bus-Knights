@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using System.Collections;
 using System;
@@ -9,39 +8,26 @@ using System.Threading;
 
 public class UdpSocket : MonoBehaviour
 {
+
     [HideInInspector] public bool isTxStarted = false;
 
     // Local host
     [SerializeField] string IP = "192.168.25.38";
 
-    // Port to receive data from Server
+    // Port : receive data from Server
     [SerializeField] int rxPort = 8000;
 
-    // port to send data to Server
+    // Port : send data to Server
     [SerializeField] int txPort = 8001;
 
-    int i = 0; // DELETE THIS: Added to show sending data from Unity to Python via UDP
-
-    // Create necessary UdpClient objects
+    // Create UdpClient objects
     UdpClient client;
     IPEndPoint remoteEndPoint;
-    Thread receiveThread; // Receiving Thread
-
+    Thread receiveThread; 
 
     // 20210812_KDH player receiving magic data
     public string curMagicStr;
-    public bool isreceivedData = false;
-
-
-    IEnumerator SendDataCoroutine() // DELETE THIS: Added to show sending data from Unity to Python via UDP
-    {
-        while (true)
-        {
-            SendData("Sent from Unity: " + i.ToString());
-            i++;
-            yield return new WaitForSeconds(1f);
-        }
-    }
+    public bool isreceivedData = false; 
 
     // Function : send data to server
     public void SendData(string message)
@@ -59,6 +45,7 @@ public class UdpSocket : MonoBehaviour
 
     private void Update()
     {
+        // 매 프레임마다 값을 false로 갱신
         isreceivedData = false;
     }
 
@@ -78,11 +65,9 @@ public class UdpSocket : MonoBehaviour
         receiveThread.Start();
 
         // Initialization
-        print("UDP Comms Initialised");
+        print("Udp Communications Starting...");
 
-        StartCoroutine(SendDataCoroutine()); // DELETE THIS: Added to show sending data from Unity to Python via UDP
 
-        //StartCoroutine(initReceivedDataFlag());
     }
 
     // Function : receive data, update packets received
@@ -100,8 +85,6 @@ public class UdpSocket : MonoBehaviour
                 curMagicStr = text;
                 ChangeIsreceivedData();
 
-
-                print(">> " + text);
                 ProcessInput(text);
             }
             catch (Exception err)
@@ -126,7 +109,7 @@ public class UdpSocket : MonoBehaviour
         }
     }
 
-    //Prevent crashes, close clients and threads properly
+    //Prevent crashes, Close threads and clients
     void OnDisable()
     {
         if (receiveThread != null)

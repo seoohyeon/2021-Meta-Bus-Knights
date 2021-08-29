@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     //마법 프리팹이 생성되는 장소
-    public GameObject magicPrefabPos;
+    //public GameObject magicPrefabPos;
 
     //마법 프리팹
     public GameObject[] magicPrefabs;
@@ -61,12 +61,14 @@ public class PlayerAttack : MonoBehaviour
 
         udpSoc.isreceivedData = false;
 
+        // 마우스 input으로 fireMagic 값이 true가 되면 fireMagic 함수 실행 
         if (playerInput.fireMagic == true)
         {
             fireMagic();
         }
     }
 
+    // 마법 발사 함수
     private void fireMagic()
     {
         if (playerInput.changeCharacterState == 0)
@@ -74,21 +76,18 @@ public class PlayerAttack : MonoBehaviour
         else if (playerInput.changeCharacterState == 1)
         {
             // magic - fireball
-            // magic을 magicPrefabPos에 생성한다.
             GameObject magic = Instantiate(magicPrefabs[0], magicPosition.position, magicPosition.rotation);
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
         else if (playerInput.changeCharacterState == 2)
         {
             // magic - thunderstorm
-            // magic을 magicPrefabPos에 생성한다.
             GameObject magic = Instantiate(magicPrefabs[1], magicPosition.position, magicPosition.rotation); 
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
         else if (playerInput.changeCharacterState == 3)
         {
             // magic - ignition
-            // magic을 magicPrefabPos에 생성한다.
             GameObject magic = Instantiate(magicPrefabs[2], magicPosition.position, magicPosition.rotation);
                                                                                                              //magic.transform.LookAt(magicPosition.forward);
         }
