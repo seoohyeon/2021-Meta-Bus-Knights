@@ -15,6 +15,10 @@ public class PlayerAttack : MonoBehaviour
     //public Transform ServerManager;
     private UdpSocket udpSoc;
 
+    // 20210903_KDH
+    // magic casting 확인용 bool 변수
+    public bool isReadytoCast_Magic = false;
+
 
     //마법 프리팹이 생성되는 장소
     //public GameObject magicPrefabPos;
@@ -40,23 +44,35 @@ public class PlayerAttack : MonoBehaviour
         // 20210812 KDH 손 동작시 마법 발사 구현
         if (udpSoc.isreceivedData)
         {
-            if (udpSoc.curMagicStr == "fireball")
+
+            if(udpSoc.curMagicStr == "magicCasting")
             {
-                Debug.Log("!!!!!!!fireball");
-                playerInput.setChangeCharacterState(1);
-            }   
-            else if(udpSoc.curMagicStr == "thunderStorm")
-            {
-                Debug.Log("!!!!!!thunderstorm");
-                playerInput.setChangeCharacterState(2);
+                Debug.Log("== Ready To Cast Magic ==");
+                isReadytoCast_Magic = true;
             }
-            else if(udpSoc.curMagicStr == "ignition")
+
+            if (udpSoc.curMagicStr == "fireball" && isReadytoCast_Magic)
             {
-                Debug.Log("!!!!!!ignition");
+                isReadytoCast_Magic = false;
+                Debug.Log("==== fireball ====");
+                playerInput.setChangeCharacterState(1);
+                fireMagic();
+            }   
+            else if(udpSoc.curMagicStr == "thunderStorm" && isReadytoCast_Magic)
+            {
+                isReadytoCast_Magic = false;
+                Debug.Log("!!! thunderstorm !!!");
+                playerInput.setChangeCharacterState(2);
+                fireMagic();
+            }
+            else if(udpSoc.curMagicStr == "ignition" && isReadytoCast_Magic)
+            {
+                isReadytoCast_Magic = false;
+                Debug.Log("*** ignition ***");
                 playerInput.setChangeCharacterState(3);
+                fireMagic();
             }
             
-            fireMagic();
         }
 
         udpSoc.isreceivedData = false;

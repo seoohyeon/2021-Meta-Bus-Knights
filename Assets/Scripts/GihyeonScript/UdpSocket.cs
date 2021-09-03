@@ -27,7 +27,8 @@ public class UdpSocket : MonoBehaviour
 
     // 20210812_KDH player receiving magic data
     public string curMagicStr;
-    public bool isreceivedData = false; 
+    public bool isreceivedData = false;
+    public string text;
 
     // Function : send data to server
     public void SendData(string message)
@@ -45,6 +46,10 @@ public class UdpSocket : MonoBehaviour
 
     private void Update()
     {
+        // Str값을 매 프레임마다 초기화
+        curMagicStr = "";
+        text = "";
+
         // 매 프레임마다 값을 false로 갱신
         isreceivedData = false;
     }
@@ -79,7 +84,7 @@ public class UdpSocket : MonoBehaviour
             {
                 IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
                 byte[] data = client.Receive(ref anyIP);
-                string text = Encoding.UTF8.GetString(data);
+                text = Encoding.UTF8.GetString(data);
 
                 // 20210812_KDH send magic kind to player
                 curMagicStr = text;
