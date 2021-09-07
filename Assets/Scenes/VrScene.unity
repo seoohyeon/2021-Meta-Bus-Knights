@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,7 +279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &159033852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8613a3627b68aa49a32db6c126958c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReadytoCast_Magic: 0
   magicPrefabs:
   - {fileID: 7870853495756522869, guid: 59bb9ef5aacde714c898d3c1a7344baf, type: 3}
   - {fileID: 3749738912053542669, guid: 3413d4c614037924cbe373ff3d132559, type: 3}
@@ -407,6 +408,7 @@ MonoBehaviour:
   txPort: 8001
   curMagicStr: 
   isreceivedData: 0
+  text: 
 --- !u!4 &244038955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 879036462721122093, guid: a161f80a3ea0db04691d32fb136b1bf2, type: 3}
@@ -1005,7 +1007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &972313171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,6 +1026,7 @@ MonoBehaviour:
   txPort: 8001
   curMagicStr: 
   isreceivedData: 0
+  text: 
 --- !u!4 &972313172
 Transform:
   m_ObjectHideFlags: 0
@@ -1431,10 +1434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3041edd0389e54799a44155e14df0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fingerTip: {fileID: 422039319}
   location: {fileID: 1891922399}
   cube: {fileID: 845237392281486152, guid: 9b66b1747794775449145b8b00665ef1, type: 3}
-  hand: {fileID: 1838338998}
+  fingerTip: {fileID: 422039319}
 --- !u!4 &1142476528
 Transform:
   m_ObjectHideFlags: 0
@@ -1927,11 +1929,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785426913}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1838338998 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1870938896605422, guid: 835e735ca71bf78459fb2cababd74112, type: 3}
-  m_PrefabInstance: {fileID: 1061011242}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1891922399
 GameObject:
   m_ObjectHideFlags: 0
