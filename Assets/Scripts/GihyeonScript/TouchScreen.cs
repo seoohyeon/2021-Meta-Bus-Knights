@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TouchScreen : MonoBehaviour
 {
+    // UI 게임 오브젝트
+    public GameObject vrUi;
+    // UI가 활성화 돼있는지 check 하는 변수
+    bool isUi;
+
     // test prefab이 생성될 위치
     public GameObject location;
     // VR UI test용 prefab
@@ -24,6 +29,8 @@ public class TouchScreen : MonoBehaviour
         touchDistance = 0.01f;
         isPointing = false;
         isTouching = false;
+
+        isUi = false;
     }
 
     void Update()
@@ -48,6 +55,8 @@ public class TouchScreen : MonoBehaviour
             }
         }
 
+        UiOnOff();
+
 
     } 
 
@@ -60,6 +69,24 @@ public class TouchScreen : MonoBehaviour
         else
         {
             isPointing = false;
+        }
+    }
+
+    void UiOnOff()
+    {
+        // space바 누를 시 UI ON/OFF
+        if (Input.GetKeyDown(KeyCode.Space) && isUi == false)
+        {
+            vrUi.SetActive(true);
+            isUi = true;
+            //Debug.Log("활성화");
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && isUi == true)
+        {
+            vrUi.SetActive(false);
+            isUi = false;
+            //Debug.Log("비활성화");
+
         }
     }
 }
