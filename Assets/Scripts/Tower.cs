@@ -4,52 +4,52 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Tower : MonoBehaviour {
-
-	public static Tower Instance;
+public class Tower : MonoBehaviour
+{
+    public static Tower Instance;
 
     public Slider hpSlider;
 
-	public int MAX_HP = 10;
-	int hp = 0;
-    bool gameOver = false; //시작시 게임오버가 아님 
+    public int MAX_HP = 5;
+    int hp = 0;
+    bool gameOver = false;
 
-	public GameObject die;
+    public GameObject die;
 
-	void Awake()
-	{
-        
-		if(Instance == null)
-			Instance = this;
-	}
+    void Awake()
+    {
 
-	void Start()
-	{
-        
-		hp = MAX_HP;
-	}
+        if (Instance == null)
+            Instance = this;
+    }
+
+    void Start()
+    {
+        hp = MAX_HP;
+    }
 
     private void Update()
     {
-        if (gameOver == true && Input.GetMouseButton(0))
-            SceneManager.LoadScene("Stage1");
+        if (gameOver == true && Input.GetKeyDown(KeyCode.Space)) 
+        {
+            SceneManager.LoadScene(0);  //space 누르면 다시 stage1로 감
+        }
+
     }
 
     public void Damage()
-	{
-		hp--;
-
-
+    {
+        hp--;
         hpSlider.value = hp;
 
         gameOver = true;
 
-		if(hp <= 0)
-		{
-			if(die)  //플레이어 사망시
-			{
-				die.SetActive(true);  //게임오버 UI 생성
-			}
-		}
-	}
+        if (hp <= 0)
+        {
+            if (die)
+            {
+                die.SetActive(true);
+            }
+        }
+    }
 }
