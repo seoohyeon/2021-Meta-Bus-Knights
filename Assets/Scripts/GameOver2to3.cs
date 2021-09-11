@@ -32,8 +32,8 @@ public class GameOver2to3 : MonoBehaviour
             gameOverText.SetActive(true);
             Time.timeScale = 0;
 
-            
-            SceneManager.LoadScene("Stage3");
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Stage3");
             Time.timeScale = 1f;
         }
         

@@ -6,7 +6,7 @@ public class Restart : MonoBehaviour {
 
 	public void GameOver()
 	{
-		SceneManager.LoadScene(0);
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
 }

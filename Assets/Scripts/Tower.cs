@@ -32,7 +32,7 @@ public class Tower : MonoBehaviour
     {
         if (gameOver == true && Input.GetKeyDown(KeyCode.Space)) 
         {
-            SceneManager.LoadScene(0);  //space 누르면 다시 stage1로 감
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);  //space 누르면 다시 stage1로 감
         }
 
     }

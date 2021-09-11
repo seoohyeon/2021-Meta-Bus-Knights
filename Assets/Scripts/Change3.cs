@@ -7,6 +7,6 @@ public class Change3 : MonoBehaviour
 {
     public void SceneChange()
     {
-        SceneManager.LoadScene("Stage3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage3");
     }
 }
