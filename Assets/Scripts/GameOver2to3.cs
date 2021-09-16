@@ -25,7 +25,6 @@ public class GameOver2to3 : MonoBehaviour
         if(timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
-            timerBar.fillAmount = timeLeft / maxTime;
         }
         else
         {

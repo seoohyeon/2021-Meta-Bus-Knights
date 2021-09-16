@@ -17,7 +17,7 @@ public class DroneSpawn : MonoBehaviour {
 			float createTime = Random.Range(MIN_TIME, MAX_TIME);
 			yield return new WaitForSeconds(createTime);
 
-			Instantiate(drone, transform.position, Quaternion.identity);
+			Instantiate(drone, transform.position, Quaternion.identity); // 생성객체, 생성위치, 그냥 회전X고 기본값
 		}
 	}
 }

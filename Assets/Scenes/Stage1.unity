@@ -582,6 +582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486215537}
   - component: {fileID: 486215536}
+  - component: {fileID: 486215538}
   m_Layer: 0
   m_Name: Gun1
   m_TagString: Untagged
@@ -603,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletImpact: {fileID: 1575381050}
   explosion: {fileID: 559034191}
+  isReadytoCast_Magic: 0
   crossHair: {fileID: 179120169}
 --- !u!4 &486215537
 Transform:
@@ -618,6 +620,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &486215538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486215535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba18e2b85b65ffc4b888859bfa7358e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTxStarted: 0
+  IP: 192.168.25.38
+  rxPort: 8000
+  txPort: 8001
+  curMagicStr: 
+  isreceivedData: 0
+  text: 
 --- !u!1 &487251264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,6 +1876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletImpact: {fileID: 1575381050}
   explosion: {fileID: 4388947112716342, guid: 725be851141dd5443805e40b9fb24e9a, type: 3}
+  isReadytoCast_Magic: 0
   crossHair: {fileID: 179120169}
 --- !u!4 &1354635590
 Transform:
